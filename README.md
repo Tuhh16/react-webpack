@@ -21,6 +21,3 @@ npm run build # para fazer o build da aplicação para produção
 Qualquer mudança é bem vinda. Para mudanças importantes, abra um problema primeiro para discutir o que você gostaria de mudar.
 
 Certifique-se de atualizar os testes conforme apropriado.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
