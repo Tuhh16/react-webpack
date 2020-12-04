@@ -31,7 +31,7 @@ module.exports = {
             minify: false
         }),
         new MiniCssExtractPlugin({
-            filename: 'assets/css/style.css'
+            filename: '/css/style.css'
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.SourceMapDevToolPlugin({})
@@ -70,7 +70,7 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     limit: 550000,
-                    name: 'assets/imgs/[name].[ext]'
+                    name: '/imgs/[name].[ext]'
                 }
             },
             {
@@ -78,7 +78,7 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     limit: 550000,
-                    name: 'assets/fonts/[name].[ext]'
+                    name: '/fonts/[name].[ext]'
                 }
             },
         ],
