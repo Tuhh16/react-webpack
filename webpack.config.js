@@ -4,11 +4,19 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack')
 
 module.exports = {
-    entry: './src/index.js',
+    entry: ['./src/index.js'],
     output: {
-        filename: 'main.js',
+        chunkFilename: 'assets/js/[name].[chunkhash].index.js',
+        filename: 'assets/js/[name].[chunkhash].index.js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '',
+    },
+    performance: {
+        maxEntrypointSize: 550000,
+        maxAssetSize: 550000,
+    },
+    optimization: {
+        minimize: false,
     },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
@@ -23,31 +31,32 @@ module.exports = {
             minify: false
         }),
         new MiniCssExtractPlugin({
-            filename: 'style.css'
+            filename: 'assets/css/style.css'
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.SourceMapDevToolPlugin({})
     ],
-    devtool: false,
+    devtool: 'inline-source-map',
     module: {
         rules: [
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
                 MiniCssExtractPlugin.loader,
-                'css-loader',
-                'sass-loader'
+                    'css-loader',
+                    'sass-loader'
                 ],
             },
             {
                 test: /\.css$/i,
                 use: [
                     'style-loader',
-                    'css-loader'
+                    'css-loader',
                 ]
             },
             {
                 test: /\.m?js$/,
+                include: path.resolve(__dirname, 'src'),
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -59,10 +68,18 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
                 loader: 'file-loader',
+                options: {
+                    limit: 550000,
+                    name: 'assets/imgs/[name].[ext]'
+                }
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 loader: 'file-loader',
+                options: {
+                    limit: 550000,
+                    name: 'assets/fonts/[name].[ext]'
+                }
             },
         ],
     },
