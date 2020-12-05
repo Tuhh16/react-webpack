@@ -6,8 +6,8 @@ const webpack = require('webpack')
 module.exports = {
     entry: ['./src/index.js'],
     output: {
-        chunkFilename: 'assets/js/[name].[chunkhash].index.js',
-        filename: 'assets/js/[name].[chunkhash].index.js',
+        chunkFilename: 'assets/js/[name].[chunkhash].js',
+        filename: 'assets/js/[name].[chunkhash].js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '',
     },
@@ -31,7 +31,7 @@ module.exports = {
             minify: false
         }),
         new MiniCssExtractPlugin({
-            filename: '/css/style.css'
+            filename: 'css/style.css'
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.SourceMapDevToolPlugin({})
