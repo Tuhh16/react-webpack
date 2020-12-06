@@ -6,14 +6,13 @@ const webpack = require('webpack')
 module.exports = {
     entry: ['./src/index.js'],
     output: {
-        chunkFilename: 'assets/js/[name].[chunkhash].js',
-        filename: 'assets/js/[name].[chunkhash].js',
+        filename: 'assets/js/[name].js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '',
     },
     performance: {
-        maxEntrypointSize: 550000,
-        maxAssetSize: 550000,
+        maxEntrypointSize: 99999999,
+        maxAssetSize: 99999999,
     },
     optimization: {
         minimize: false,
@@ -67,15 +66,15 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-                loader: 'file-loader',
+                loader: 'url-loader',
                 options: {
-                    limit: 550000,
+                    limit: 99999999,
                     name: '/imgs/[name].[ext]'
                 }
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
-                loader: 'file-loader',
+                loader: 'url-loader',
                 options: {
                     limit: 550000,
                     name: '/fonts/[name].[ext]'
