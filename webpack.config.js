@@ -69,7 +69,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 99999999,
-                    name: '/imgs/[name].[ext]'
+                    name: '/assets/imgs/[name].[ext]'
                 }
             },
             {
@@ -77,7 +77,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 550000,
-                    name: '/fonts/[name].[ext]'
+                    name: '/assets/fonts/[name].[ext]'
                 }
             },
         ],
